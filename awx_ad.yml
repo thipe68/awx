@@ -1,0 +1,20 @@
+---
+- name: Add user to Active Directory
+  hosts: windows
+  gather_facts: no
+  tasks:
+    - name: Create user
+      community.windows.win_domain_user:
+        name: "{{ username }}"
+        password: "{{ password }}"
+        state: present
+        domain_username: "{{ domain_username }}"
+        domain_password: "{{ domain_password }}"
+        domain_server: "{{ domain_server }}"
+      vars:
+        username: "anurag"
+        password: "Taashee@123"
+        domain_username: "administrator"
+        domain_password: "taashee@123"
+        domain_server: "192.168.1.35"
+
